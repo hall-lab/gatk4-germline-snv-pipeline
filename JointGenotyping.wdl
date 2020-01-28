@@ -137,18 +137,7 @@ workflow JointGenotyping {
       sample_name_map = sample_name_map
   }
 
-  call Tasks.SplitIntervalList {
-    input:
-      interval_list = unpadded_intervals_file,
-      scatter_count = scatter_count,
-      ref_fasta = ref_fasta,
-      ref_fasta_index = ref_fasta_index,
-      ref_dict = ref_dict,
-      disk_size = small_disk,
-      sample_names_unique_done = CheckSamplesUnique.samples_unique
-  }
-
-  Array[File] unpadded_intervals = SplitIntervalList.output_intervals
+  Array[String] unpadded_intervals = read_lines(unpadded_intervals_file)
 
   scatter (idx in range(length(unpadded_intervals))) {
     # The batch_size value was carefully chosen here as it
