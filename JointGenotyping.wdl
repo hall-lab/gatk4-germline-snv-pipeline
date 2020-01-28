@@ -112,8 +112,11 @@ workflow JointGenotyping {
 
   Boolean allele_specific_annotations = !use_gnarly_genotyper && use_allele_specific_annotations
 
-  Array[Array[String]] sample_name_map_lines = read_tsv(sample_name_map)
-  Int num_gvcfs = length(sample_name_map_lines)
+  call Tasks.ComputeNumSamples {
+    input:
+      sample_name_map = sample_name_map
+  }
+  Int num_gvcfs = ComputeNumSamples.num_samples
 
   # Make a 2.5:1 interval number to samples in callset ratio interval list.
   # We allow overriding the behavior by specifying the desired number of vcfs

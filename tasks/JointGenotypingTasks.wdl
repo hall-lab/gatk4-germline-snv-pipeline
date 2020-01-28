@@ -1,5 +1,25 @@
 version 1.0
 
+task ComputeNumSamples {
+  input {
+    File sample_name_map
+  }
+
+  command {
+    grep 'chr5' ~{sample_name_map} | wc -l
+  }
+
+  output {
+    Int num_samples = read_int(stdout())
+  }
+
+  runtime {
+    memory: "1 GiB"
+    preemptible: 1
+    disks: "local-disk 10 HDD"
+    docker: "us.gcr.io/broad-gotc-prod/python:2.7"
+  }
+}
 
 task CheckSamplesUnique {
   input {
