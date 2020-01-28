@@ -140,13 +140,19 @@ workflow JointGenotyping {
   Array[String] unpadded_intervals = read_lines(unpadded_intervals_file)
 
   scatter (idx in range(length(unpadded_intervals))) {
+    call CollectGVCFs {
+      input:
+        interval = unpadded_intervals[idx],
+        master_list = sample_name_map
+    }
+
     # The batch_size value was carefully chosen here as it
     # is the optimal value for the amount of memory allocated
     # within the task; please do not change it without consulting
     # the Hellbender (GATK engine) team!
     call Tasks.ImportGVCFs {
       input:
-        sample_name_map = sample_name_map,
+        sample_name_map = CollectGVCFs.gvcf_sample_name_map,
         interval = unpadded_intervals[idx],
         ref_fasta = ref_fasta,
         ref_fasta_index = ref_fasta_index,
