@@ -55,41 +55,41 @@ task CheckSamplesUnique {
   }
 }
 
-task SplitIntervalList {
+task CollectGVCFs {
+  String interval
+  File master_list
 
-  input {
-    File interval_list
-    Int scatter_count
-    File ref_fasta
-    File ref_fasta_index
-    File ref_dict
-    Boolean sample_names_unique_done
-    Int disk_size
-    String scatter_mode = "BALANCING_WITHOUT_INTERVAL_SUBDIVISION_WITH_OVERFLOW"
-    String gatk_docker = "us.gcr.io/broad-gatk/gatk:4.1.1.0"
+  command {
+    python << CODE
+    from __future__ import print_function
+
+    def parse_interval(interval):
+        colon_split = interval.split(":")
+        chromosome = colon_split[0]
+        dash_split = colon_split[1].split("-")
+        start = int(dash_split[0])
+        end = int(dash_split[1])
+        return chromosome, start, end
+
+    (chrom, left_pos, right_pos) = parse_interval("${interval}")
+
+    with open("${master_list}", 'r') as f, open("gvcf.sample_map", 'w') as out1:
+        for line in f:
+            (sample_name, chromosome, gvcf_path) = line.rstrip().split("\t")
+
+            if chrom == chromosome:
+                print("\t".join([sample_name, gvcf_path]), file=out1)
+    CODE
   }
-
-  parameter_meta {
-    interval_list: {
-      localization_optional: true
-    }
-  }
-
-  command <<<
-    gatk --java-options -Xms3g SplitIntervals \
-      -L ~{interval_list} -O  scatterDir -scatter ~{scatter_count} -R ~{ref_fasta} \
-      -mode ~{scatter_mode}
-   >>>
 
   runtime {
-    memory: "3.75 GiB"
-    preemptible: 1
-    disks: "local-disk " + disk_size + " HDD"
-    docker: gatk_docker
+    memory: "1 GB"
+    preemptible: 5
+    docker: "python@sha256:f8fbc752ca1d568a7cda2f6de6156ca49d08a3cfd84815f90f778f346b260923"
   }
 
   output {
-    Array[File] output_intervals = glob("scatterDir/*")
+    File gvcf_sample_name_map = "gvcf.sample_map"
   }
 }
 
