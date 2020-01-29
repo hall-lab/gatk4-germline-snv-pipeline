@@ -56,8 +56,11 @@ task CheckSamplesUnique {
 }
 
 task CollectGVCFs {
-  String interval
-  File master_list
+
+  input {
+    String interval
+    File master_list
+  }
 
   command {
     python << CODE
@@ -83,8 +86,9 @@ task CollectGVCFs {
   }
 
   runtime {
-    memory: "1 GB"
+    memory: "1 GiB"
     preemptible: 5
+    disks: "local-disk 10 HDD"
     docker: "python@sha256:f8fbc752ca1d568a7cda2f6de6156ca49d08a3cfd84815f90f778f346b260923"
   }
 
