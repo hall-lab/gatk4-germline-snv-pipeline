@@ -6,7 +6,7 @@ task ComputeNumSamples {
   }
 
   command {
-    grep 'chr5' ~{sample_name_map} | wc -l
+    cut -f 1 ~{sample_name_map} | sort -u | wc -l
   }
 
   output {
