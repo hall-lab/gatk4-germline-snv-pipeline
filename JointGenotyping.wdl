@@ -140,7 +140,7 @@ workflow JointGenotyping {
   Array[String] unpadded_intervals = read_lines(unpadded_intervals_file)
 
   scatter (idx in range(length(unpadded_intervals))) {
-    call CollectGVCFs {
+    call Tasks.CollectGVCFs {
       input:
         interval = unpadded_intervals[idx],
         master_list = sample_name_map
@@ -390,6 +390,6 @@ workflow JointGenotyping {
     Array[File] output_vcf_indices = select_all(output_vcf_index_files)
 
     # Output the interval list generated/used by this run workflow.
-    Array[File] output_intervals = SplitIntervalList.output_intervals
+    Array[String] output_intervals = unpadded_intervals
   }
 }
