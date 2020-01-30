@@ -114,6 +114,8 @@ task ImportGVCFs {
     # Using a nightly version of GATK containing fixes for GenomicsDB
     # https://github.com/broadinstitute/gatk/pull/5899
     String gatk_docker = "us.gcr.io/broad-gotc-prod/gatk-nightly:2019-05-07-4.1.2.0-5-g53d015e4f-NIGHTLY-SNAPSHOT"
+
+    String google_project
   }
 
   command <<<
@@ -138,6 +140,7 @@ task ImportGVCFs {
       --sample-name-map ~{sample_name_map} \
       --reader-threads 5 \
       --merge-input-intervals \
+      --gcs-project-for-requester-pays ~{google_project} \
       --consolidate
 
     tar -cf ~{workspace_dir_name}.tar ~{workspace_dir_name}

@@ -100,6 +100,8 @@ workflow JointGenotyping {
     Float indel_filter_level
     Int SNP_VQSR_downsampleFactor
 
+    String google_project
+
     Int? top_level_scatter_count
     Boolean? gather_vcfs
     Int snps_variant_recalibration_threshold = 500000
@@ -153,6 +155,7 @@ workflow JointGenotyping {
     call Tasks.ImportGVCFs {
       input:
         sample_name_map = CollectGVCFs.gvcf_sample_name_map,
+        google_project = google_project,
         interval = unpadded_intervals[idx],
         ref_fasta = ref_fasta,
         ref_fasta_index = ref_fasta_index,
