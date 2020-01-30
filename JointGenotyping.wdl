@@ -45,7 +45,7 @@ version 1.0
 
 # WORKFLOW DEFINITION 
 
-import "./tasks/JointGenotypingTasks.wdl" as Tasks
+import "tasks/JointGenotypingTasks.wdl" as Tasks
 
 #import "https://raw.githubusercontent.com/gatk-workflows/gatk4-germline-snps-indels/2.0.0/tasks/JointGenotypingTasks.wdl" as Tasks
 
