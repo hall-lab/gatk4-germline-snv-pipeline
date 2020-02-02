@@ -239,7 +239,7 @@ task GnarlyGenotyper {
     }
   }
 
-  Int disk_size = ceil(size(workspace_tar, "GiB") + size(ref_fasta, "GiB") + size(dbsnp_vcf, "GiB") * 3)
+  Int disk_size = ceil(size(workspace_tar, "GiB") + size(ref_fasta, "GiB") + size(dbsnp_vcf, "GiB") * 6)
 
   command <<<
     set -e
