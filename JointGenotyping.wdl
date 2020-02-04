@@ -108,7 +108,7 @@ workflow JointGenotyping {
     Boolean rename_gvcf_samples = true
     Float unbounded_scatter_count_scale_factor = 0.15
     Int gnarly_scatter_count = 10
-    Boolean use_gnarly_genotyper = true
+    Boolean use_gnarly_genotyper = false
     Boolean use_allele_specific_annotations = true
   }
 
