@@ -151,7 +151,7 @@ task ImportGVCFs {
     cpu: 4
     disks: "local-disk " + disk_size + " HDD"
     docker: gatk_docker
-    preemptible: 1
+    preemptible: 2
   }
 
   output {
@@ -209,7 +209,7 @@ task GenotypeGVCFs {
     memory: "26 GiB"
     cpu: 2
     disks: "local-disk " + disk_size + " HDD"
-    preemptible: 1
+    preemptible: 2
     docker: gatk_docker
   }
 
@@ -325,7 +325,7 @@ task HardFilterAndMakeSitesOnlyVcf {
     memory: "3.75 GiB"
     cpu: "1"
     disks: "local-disk " + disk_size + " HDD"
-    preemptible: 1
+    preemptible: 2
     docker: gatk_docker
   }
 
@@ -451,7 +451,7 @@ task SNPsVariantRecalibratorCreateModel {
     memory: "104 GiB"
     cpu: "2"
     disks: "local-disk " + disk_size + " HDD"
-    preemptible: 1
+    preemptible: 2
     docker: gatk_docker
   }
 
@@ -529,7 +529,7 @@ task SNPsVariantRecalibrator {
     memory: "~{machine_mem} GiB"
     cpu: 2
     disks: "local-disk " + disk_size + " HDD"
-    preemptible: 1
+    preemptible: 2
     docker: gatk_docker
   }
 
@@ -592,7 +592,7 @@ task GatherTranches {
     memory: "7.5 GiB"
     cpu: "2"
     disks: "local-disk " + disk_size + " HDD"
-    preemptible: 1
+    preemptible: 2
     docker: gatk_docker
   }
 
@@ -650,7 +650,7 @@ task ApplyRecalibration {
     memory: "7 GiB"
     cpu: "1"
     disks: "local-disk " + disk_size + " HDD"
-    preemptible: 1
+    preemptible: 2
     docker: gatk_docker
   }
 
@@ -695,7 +695,7 @@ task GatherVcfs {
     memory: "7 GiB"
     cpu: "1"
     disks: "local-disk " + disk_size + " HDD"
-    preemptible: 1
+    preemptible: 2
     docker: gatk_docker
   }
 
@@ -788,7 +788,7 @@ task CollectVariantCallingMetrics {
     memory: "7.5 GiB"
     cpu: 2
     disks: "local-disk " + disk_size + " HDD"
-    preemptible: 1
+    preemptible: 2
     docker: gatk_docker
   }
 }
@@ -860,7 +860,7 @@ task GatherVariantCallingMetrics {
     memory: "3 GiB"
     cpu: "1"
     disks: "local-disk " + disk_size + " HDD"
-    preemptible: 1
+    preemptible: 2
     docker: gatk_docker
   }
 
