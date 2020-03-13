@@ -207,7 +207,7 @@ task GenotypeGVCFs {
 
   runtime {
     memory: "32 GiB"
-    cpu: 2
+    cpu: 4
     disks: "local-disk " + disk_size + " HDD"
     preemptible: 2
     docker: gatk_docker
