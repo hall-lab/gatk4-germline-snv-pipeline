@@ -151,7 +151,7 @@ task ImportGVCFs {
     cpu: 4
     disks: "local-disk " + disk_size + " HDD"
     docker: gatk_docker
-    preemptible: 4
+    preemptible: 2
   }
 
   output {
@@ -209,7 +209,7 @@ task GenotypeGVCFs {
     memory: "64 GiB"
     cpu: 2
     disks: "local-disk " + disk_size + " HDD"
-    preemptible: 4
+    preemptible: 2
     docker: gatk_docker
   }
 
