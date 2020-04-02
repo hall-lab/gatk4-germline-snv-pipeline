@@ -147,11 +147,11 @@ task ImportGVCFs {
   >>>
 
   runtime {
-    memory: "32 GiB"
+    memory: "64 GiB"
     cpu: 4
     disks: "local-disk " + disk_size + " HDD"
     docker: gatk_docker
-    preemptible: 2
+    preemptible: 4
   }
 
   output {
@@ -206,10 +206,10 @@ task GenotypeGVCFs {
   >>>
 
   runtime {
-    memory: "32 GiB"
-    cpu: 4
+    memory: "64 GiB"
+    cpu: 2
     disks: "local-disk " + disk_size + " HDD"
-    preemptible: 2
+    preemptible: 4
     docker: gatk_docker
   }
 
