@@ -679,6 +679,7 @@ task GatherVcfs {
   command <<<
     set -euo pipefail
 
+    mv ~{input_vcfs_file} all_inputs.list
     # --ignore-safety-checks makes a big performance difference so we include it in our invocation.
     # This argument disables expensive checks that the file headers contain the same set of
     # genotyped samples and that files are in order by position of first record.
@@ -686,7 +687,7 @@ task GatherVcfs {
       GatherVcfsCloud \
       --ignore-safety-checks \
       --gather-type BLOCK \
-      --input ~{input_vcfs_file} \
+      --input all_inputs.list \
       --output ~{output_vcf_name}
 
     tabix ~{output_vcf_name}
