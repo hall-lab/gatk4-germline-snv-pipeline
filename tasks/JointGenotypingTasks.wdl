@@ -664,6 +664,7 @@ task GatherVcfs {
 
   input {
     Array[File] input_vcfs
+    File input_vcfs_file = write_lines(input_vcfs)
     String output_vcf_name
     Int disk_size
     String gatk_docker = "us.gcr.io/broad-gatk/gatk:4.1.1.0"
@@ -685,7 +686,7 @@ task GatherVcfs {
       GatherVcfsCloud \
       --ignore-safety-checks \
       --gather-type BLOCK \
-      --input ~{sep=" --input " input_vcfs} \
+      --input ~{input_vcfs_file} \
       --output ~{output_vcf_name}
 
     tabix ~{output_vcf_name}
