@@ -789,7 +789,7 @@ task CollectVariantCallingMetrics {
   runtime {
     memory: "7.5 GiB"
     cpu: 2
-    disks: "local-disk " + disk_size + " HDD"
+    disks: "local-disk " + (disk_size * 2) + " HDD"
     preemptible: 2
     docker: gatk_docker
   }
