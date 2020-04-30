@@ -9,7 +9,7 @@ DATA_DIR=${SOURCE_DIR}/..
 
 WDL=${DATA_DIR}/JointGenotyping.wdl
 INPUTS=${DATA_DIR}/JointGenotyping.hg38.wgs.inputs.json
-OPTIONS=${DATA_DIR}/2020.01.29.options.json
+OPTIONS=${DATA_DIR}/2020.02.25.options.json
 ZIP=${DATA_DIR}/tasks.zip
 
 if [ -e ${ZIP} ]; then

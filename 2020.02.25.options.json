@@ -1,0 +1,17 @@
+{
+  "workflow_failure_mode": "ContinueWhilePossible",
+  "enable_ssh_access": true,
+  "jes_gcs_root": "gs://awesome-gatk4-call-set-20200225/gatk4/cromwell/cromwell-executions",
+  "read_from_cache": true,
+  "monitoring_script": "gs://awesome-wustl-cromwell/mem_monitor.sh",
+  "final_workflow_outputs_dir": "gs://awesome-gatk4-call-set-20200225/gatk4/cromwell/final-outputs-2020-04-26",
+  "default_runtime_attributes": {
+    "zones": "us-central1-a us-central1-b us-central1-c us-central1-f"
+  },
+  "google_labels":{
+    "user": "awesome-user",
+    "project": "gatk4-call-set-20200225",
+    "pipeline": "joint-genotyping"
+  }
+}
+
