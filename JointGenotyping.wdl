@@ -379,9 +379,13 @@ workflow JointGenotyping {
   File output_detail_metrics_file = select_first([CollectMetricsOnFullVcf.detail_metrics_file, GatherVariantCallingMetrics.detail_metrics_file])
   File output_summary_metrics_file = select_first([CollectMetricsOnFullVcf.summary_metrics_file, GatherVariantCallingMetrics.summary_metrics_file])
 
+  # Tranches
+  File? snp_tranches = if defined(SNPGatherTranches.tranches) then SNPGatherTranches.tranches else SNPsVariantRecalibratorClassic.tranches
+  File indel_tranches = IndelsVariantRecalibrator.tranches
+
   # Get the VCFs from either code path
-  Array[File?] output_vcf_files = if defined(FinalGatherVcf.output_vcf) then [FinalGatherVcf.output_vcf] else ApplyRecalibration.recalibrated_vcf
-  Array[File?] output_vcf_index_files = if defined(FinalGatherVcf.output_vcf_index) then [FinalGatherVcf.output_vcf_index] else ApplyRecalibration.recalibrated_vcf_index
+  Array[File?] output_vcf_files = ApplyRecalibration.recalibrated_vcf
+  Array[File?] output_vcf_index_files = ApplyRecalibration.recalibrated_vcf_index
 
   output {
     # Metrics from either the small or large callset
@@ -389,8 +393,12 @@ workflow JointGenotyping {
     File summary_metrics_file = output_summary_metrics_file
 
     # Outputs from the small callset path through the wdl.
-    Array[File] output_vcfs = select_all(output_vcf_files)
-    Array[File] output_vcf_indices = select_all(output_vcf_index_files)
+    Array[File?] output_vcfs = select_all(output_vcf_files)
+    Array[File?] output_vcf_indices = select_all(output_vcf_index_files)
+
+    # Output from the GatherTranches
+    File? snp_tranches_file = snp_tranches
+    File indel_tranches_file = indel_tranches
 
     # Output the interval list generated/used by this run workflow.
     Array[String] output_intervals = unpadded_intervals
