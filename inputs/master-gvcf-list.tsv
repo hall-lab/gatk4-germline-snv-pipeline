@@ -1,0 +1,4 @@
+H_IJ-HG00403-HG00403	chr1	gs://gatk-test-data/inputs/H_IJ-HG00403-HG00403/H_IJ-HG00403-HG00403.chr1.g.vcf.gz
+H_IJ-HG00403-HG00403	chr2	gs://gatk-test-data/inputs/H_IJ-HG00403-HG00403/H_IJ-HG00403-HG00403.chr2.g.vcf.gz
+H_IJ-HG00404-HG00404	chr1	gs://gatk-test-data/inputs/H_IJ-HG00404-HG00404/H_IJ-HG00404-HG00404.chr1.g.vcf.gz
+H_IJ-HG00404-HG00404	chr2	gs://gatk-test-data/inputs/H_IJ-HG00404-HG00404/H_IJ-HG00404-HG00404.chr2.g.vcf.gz
