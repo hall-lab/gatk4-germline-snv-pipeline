@@ -97,7 +97,7 @@ java -Xmx3500M \
 [2]: https://github.com/hall-lab
 [3]: https://github.com/gatk-workflows/gatk4-germline-snps-indels
 [4]: https://github.com/gatk-workflows/gatk4-germline-snps-indels/tree/3bee02b5e843a83edc7f7dc25d8c10d3b06043bb
-[5]: https://github.com/indraniel/gatk4-germline-snv-pipeline/blob/master/ReblockGVCF.wdl
+[5]: https://github.com/hall-lab/gatk4-germline-snv-pipeline/blob/master/ReblockGVCF.wdl
 [6]: https://github.com/statgen/verifyBamID
 [7]: https://www.ncbi.nlm.nih.gov/assembly/GCF_000001405.26/
 [8]: https://github.com/broadinstitute/gatk-docs/blob/master/gatk3-tooldocs/3.6-0/org_broadinstitute_gatk_tools_walkers_haplotypecaller_HaplotypeCaller.json#L584
