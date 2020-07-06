@@ -12,7 +12,7 @@ The Broad pipeline had tasks related to fingerprinting.  The fingerprinting task
 
 ## Removal of the SplitIntervalList task
 
-We noticed some non-intuitive behavior from the SplitIntervals task.  After discussing with @ldgauthier, and to keep things simple, we ended up deciding to use the 20,000 hand curated interval list (`gs://gcp-public-data--broad-references/hg38/v0/hg38.even.handcurated.20k.intervals`) created by @eitanbanks at the Broad Institute.
+We noticed some non-intuitive behavior from the SplitIntervals task.  After discussing with [@ldgauthier][9], and to keep things simple, we ended up deciding to use the 20,000 hand curated interval list (`gs://gcp-public-data--broad-references/hg38/v0/hg38.even.handcurated.20k.intervals`) created by [@eitanbanks][10] at the Broad Institute.
 
 ## Addition of the CollectGVCFs task
 
@@ -101,3 +101,5 @@ java -Xmx3500M \
 [6]: https://github.com/statgen/verifyBamID
 [7]: https://www.ncbi.nlm.nih.gov/assembly/GCF_000001405.26/
 [8]: https://github.com/broadinstitute/gatk-docs/blob/master/gatk3-tooldocs/3.6-0/org_broadinstitute_gatk_tools_walkers_haplotypecaller_HaplotypeCaller.json#L584
+[9]: https://github.com/ldgauthier
+[10]: https://github.com/eitanbanks
