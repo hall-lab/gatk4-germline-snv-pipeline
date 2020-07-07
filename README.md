@@ -35,7 +35,7 @@ Given a genomic interval, the CollectGVCFs task will create a sample map file th
 
 ## GnarlyGenotyper _(kept in, but not used)_
 
-The GnarlyGenotyper is a new approach to genotyping that's scalable for large cohorts (>25,000 samples). We ended up not using the GnarlyGenotyper, but deferring to the older but slower GenotypeGVCFs task.  The GnarlyGenotyper will require us to re-band/re-block all of our GVCFs as described in the [ReblockGVCF WDL][5].  
+The GnarlyGenotyper is a new approach to genotyping that's scalable for large cohorts. We ended up not using the GnarlyGenotyper, but deferring to the older but slower GenotypeGVCFs task.  The GnarlyGenotyper will require us to re-band/re-block all of our GVCFs as described in the [ReblockGVCF WDL][5].  
 
 Due to time constraints, we decided to persue this approach in the future.  Our initial GVCF generation parameters from HaplotypeCaller are described below.
 
