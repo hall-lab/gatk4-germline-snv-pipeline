@@ -55,7 +55,7 @@ java -Xmx16g \
      -T HaplotypeCaller \
      -R ${refFasta} \
      -I ${sampleCram} \
-     -o "${sampleName}.${chr}.g.vcf.gz" \
+     -o "${sampleName}.${chromosome}.g.vcf.gz" \
      -ERC GVCF \
      --max_alternate_alleles 3 \
      -variant_index_type LINEAR \
